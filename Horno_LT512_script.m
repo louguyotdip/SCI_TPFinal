@@ -20,12 +20,12 @@ an = 0.205;                 % Ancho [mm]
 la = 0.17;                  % Largo [mm]
 V = al*an*la;               % Volumen interno del Horno [m^3]
 
-R = 9.77;                   % Resistencia termica [°C/W]
-d = 1.225;                  % Densidad del aire [Kg/m^3]
+R = 9.77;                   % Resistencia termica                [°C/W]
+d = 1.225;                  % Densidad del aire                  [Kg/m^3]
 m = d*V;                    % Masa de aire contenida en el horno [Kg]
-c = 1005;                   % Calor especifico del aire [J/Kg K]
-C = m*c;                    % Capacitancia termica [J/K]
-TEMP = 1473;                % Temperatura que buscamos [K]
+c = 1005;                   % Calor especifico del aire          [J/Kg K]
+C = m*c;                    % Capacitancia termica               [J/K]
+TEMP = 1473;                % Temperatura que buscamos           [K]
 
 FdTLA = minreal(R/(C*R*s+1)) % Función de Transferencia a Lazo Abierto
 %% ========================================================================
@@ -38,7 +38,7 @@ FdTLC = minreal(feedback(FdTLA, Gs_sensor*Gs_ampli))
 step(TEMP*FdTLC); grid;
 title('Step response closed loop'); 
 ylabel('Temperature [K]');
-% Sistema de orden 1 tiene un unico polo
+% Sistema de orden 1 tiene un solo polo
 pole(FdTLC)         % Respuesta por terminal de comandos
 rlocus(FdTLC)       % Respuesta gráfica
 %% ========================================================================
